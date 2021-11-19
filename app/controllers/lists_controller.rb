@@ -6,10 +6,14 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @bookmark = Bookmark.new
+    @bookmark = Bookmark.new()
+
     @movies = Movie.all
     @bookmarks = Bookmark.all
   end
+
+  #   validates :comment, length: { minimum: 6 }
+  # validates :movie, uniqueness: { scope: :list }
 
   def create
     @list = List.new(list_params)
@@ -18,10 +22,6 @@ class ListsController < ApplicationController
   end
 
   private
-
-  def bookmark_params
-    params.require(:bookmark).permit(:list_id, :comment, :movie_id)
-  end
 
   def list_params
     params.require(:list).permit(:name)

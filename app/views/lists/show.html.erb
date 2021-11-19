@@ -10,11 +10,13 @@
 <%= link_to "Add a bookmark", list_path(@list) %>
 
 
+
+
+
+
 <div class="container-sm mt-5">
 <h2>Create a new bookmark</h2>
-<%= simple_form_for([ @list, @bookmark ]) do |f| %>
-  <%= f.input :movie_id, collection: @movies %>
-  <%= f.input :comment %>
+<%= simple_form_for(@list) do |f| %>
   <%= f.submit %>
 <% end %>
 </div>
@@ -22,5 +24,8 @@
 <div class="coucou">
   <% @bookmarks.each do |bookmark| %>
   <%= bookmark.comment %>
+  <%= bookmark.list_id %>
+  <%= bookmark.movie_id %>
+  <%= bookmark.id %>
   <% end %>
 </div>
